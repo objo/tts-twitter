@@ -1,5 +1,7 @@
+<h1>@<%= current_user.username %>'s Twitter Feed</h1>
+
 <ul>
   <% @tweets.each do |tweet| %>
-    <li><%= tweet.message %> </li>
+    <li>@<%= tweet.user.username %>:: <%= tweet.message.html_safe %> </li>
   <% end %>
 </ul>

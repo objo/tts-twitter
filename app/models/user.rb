@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
   has_many :tweets
 
+  serialize :following, Array
+
   mount_uploader :avatar, AvatarUploader
 end
