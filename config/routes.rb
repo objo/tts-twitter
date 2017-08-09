@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get "unfollow/:id", controller: 'epicenter', action: 'unfollow', as: :unfollow
 
+  get "/tag_tweets", controller: 'epicenter', action: 'show_tags', as: :show_tags
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

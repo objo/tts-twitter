@@ -1,0 +1,20 @@
+<div class="container">
+  <% tweets.each do |tweet| %>
+    <div class='panel panel-default'>
+      <div class='panel-body'>
+          <div class='row'>
+          <div class="col-sm-1">
+            <%= image_tag tweet.user.avatar, height: '50px' %>
+          </div>
+          <div class="col-sm-8">
+            <p>
+              <strong>@<%= tweet.user.username %></strong>
+              <%= distance_of_time_in_words(Time.now, tweet.created_at) %>
+            </p>
+            <p><%= tweet.message.html_safe %><p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -2,13 +2,10 @@ class EpicenterController < ApplicationController
   before_action :authenticate_user!
 
   def feed
-    @tweets = []
+    following = current_user.following
+    following << current_user.id
 
-    Tweet.all.each do |tweet|
-      if current_user.following.include?(tweet.user_id) || current_user.id == tweet.user_id
-        @tweets.push(tweet)
-      end
-    end
+    @tweets = Tweet.tweets_for(following)
   end
 
   def now_following
@@ -27,6 +24,10 @@ class EpicenterController < ApplicationController
 
   def show_user
     @user = User.find(params[:id])
+  end
+
+  def show_tags
+    @tag = Tag.find(params[:id])
   end
 
 end
